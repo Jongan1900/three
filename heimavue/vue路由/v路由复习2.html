@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+
+    
+    <div id="app">
+        <son :dadmsg="msg" @fun="getsondata"> </son>
+    </div>
+
+    <template id="son" >
+        <div>
+                <h1>这son的组件++++++++{{dadmsg}}</h1>
+                <input type="button" value="传值的方法" @click='send'>
+        </div>  
+    </template>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script src="../lib/vue-router v3.0.6.js"></script>
+    <script>    
+       
+        var son ={
+            template:'#son'
+            ,data(){
+                return {
+                   sonmsg:"son给dad传值啦"
+                }
+            },
+            methods:{
+                send(){
+                    this.$emit('fun',this.sonmsg);
+                }
+            },
+            props:['dadmsg']
+        }
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg:"dad给son传值啦",
+                daddata:'',
+            },
+            methods: {
+                getsondata(data){
+                    this.daddata=data;
+                    alert(this.daddata);
+                }
+            },
+            components:{
+                son,
+            }
+           
+
+        })
+    </script>
+</body>
+
+</html>

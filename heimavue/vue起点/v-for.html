@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+         <!-- 数字迭代 -->
+        <!-- <p v-for="count in 10">{{count}}次循环</p> -->
+        <!-- 数组v-for -->
+        <!-- <p v-for="item in list">{{item}}次循环</p> -->
+        <!-- 数组对象v-for -->
+        <!-- <p v-for="item in list">对象的id----{{item.id}} 对象中的name---{{item.name}}</p> -->
+        <!-- 对象v-for -->
+        <p v-for="(val,key,i) in list">对象的键值----{{val}} 对象中的键名---{{key}}，对象的索引--{{i}}</p>
+        
+    </div>
+    <script src="./lib/vue-2.4.0.js"></script>
+        <script>
+            var vm= new Vue({
+                el:"#app",  
+                data:{
+                    // list:[1,2,3,5,6]
+                    // list:[{id:1,name:"hah1"},{id:2,name:"hah2"},{id:3,name:"hah3"}]
+                    list:{id:3,name:"hah3",like:"eat"}
+                },
+                methods:{
+
+                }
+
+            })
+        </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/animate.css">
+</head>
+
+<body>
+    <div id="app">
+        <myname></myname>      
+       
+        {{msg}}
+        <myname2></myname2>
+    </div>
+    <template id="hh">
+        <div>
+            hhhhhhhhhhhhhhhhh{{msg}}
+            <input type="button" value="+1" @click="add">
+            <p> {{count}}</p>
+        </div>
+    </template>
+<template id="xxxx">
+    <div>
+        xxxxxxxxxxxxxxxxxxxxxxxxxxx
+    </div>
+</template>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script>
+    
+        Vue.component('myname',Vue.extend({
+            template:"#hh",
+            data(){
+                return {
+                    msg:"xbxbxbxbxbxbxbxbxb",
+                    count:0,
+
+                }
+            },
+            methods:{
+                add(){
+                    this.count++;
+                }
+            }
+        }))
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag: 'false',
+                msg:"apppppppppppppppppppppppp",
+            },
+            methods: {
+
+            },
+            components:{
+                myname2:{
+                    template:"#xxxx"
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

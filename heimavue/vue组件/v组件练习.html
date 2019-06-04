@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/animate.css">
+</head>
+
+<body>
+    <div id="app">
+            <mycom1></mycom1>
+           <login></login>
+    </div>
+
+    <template id="tem2">
+        <div>
+            dadasdasd
+        </div>
+    </template>
+
+    <template id="haha">
+        <div>
+                hahahahahahaha
+        </div>
+    </template>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script>
+        // 创建的第一种方式
+        // var com1=Vue.extend({
+        //     template:`<h1>asdasdsa</h1>`
+        // });
+        // Vue.component('mycom1',com1);
+0
+            // 创建的第二种方式
+            Vue.component('mycom1',Vue.extend({
+                template:"#tem2",
+            }))
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag: 'false',
+            },
+            methods: {
+
+            },
+            components:{
+                login:{
+                    template:"#haha",
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

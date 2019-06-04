@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap-3.3.7.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <nav class="navbar navbar-inverse">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Profile</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </nav>
+        <table class="table table-bordered">
+            <thead>
+                ID：<input type="number" name="" id="" v-model="id">
+                Name：<input type="text" v-model="name" @keyup.shirt.enter="add">
+                <input type="button" name="" value=" 添加" @click="add">
+                搜索关键字：<input type="search" class="sea" :placeholder="seatxt" v-model="keyWords" v-focus
+                    v-color="'green'">
+                搜索文字<input type="search" class="sea" placeholder="搜索文字" v-model="test"  @input="color">
+                <!-- <input type="button" name="" value="搜索"> -->
+            </thead>
+            <tr v-for="(item,index) in search(keyWords)" :key='index'>
+                <td class="active">{{item.id}}</td>
+                <td class="success">{{item.name}}</td>
+                <td class="warning">{{item.ctime|timefilter()}}</td>
+                <!-- 为删除按钮添加点击事件，并且阻止浏览器的默认行为 -->
+                <td class="danger"><a href="#" @click.prevent="del(item.id)">删除</a></td>
+            </tr>
+
+
+
+
+        </table>
+    </div>
+
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script>
+        Vue.filter('timefilter', function (timestr) {
+
+
+            var dt = new Date(timestr);
+            var y = dt.getFullYear();
+            var m = (dt.getMonth() + 1).toString().padStart(2, '0');
+            var d = dt.getDate().toString().padStart(2, '0');
+            var h = dt.getHours().toString().padStart(2, '0');
+            var ms = dt.getMinutes().toString().padStart(2, '0');
+            var ses = dt.getSeconds().toString().padStart(2, '0');
+            // h=h>10?h:'0'+h;
+            // ms=ms>10?ms:'0'+ms;
+            // ses=ses>10?ses:'0'+ses;
+            // m=m>10?m:'0'+m;
+            // return(y+'年'+m+'月'+d+'日'+' '+h+'时'+ms+'分'+ses+'秒')
+            return `${y}年${m}月${d}日${h}:${ms}:${ses}`
+        })
+        // 添加一个全局的自定义焦点事件
+
+        Vue.directive('focus', {
+            inserted(el) {
+                el.focus(); //插入DOM节点中，执行一次，里面的el是js的原生对象，可以使用js的原生的方法
+            }
+
+        })
+        Vue.directive('color', {
+            bind(el, binding) {
+                console.log(binding);
+                el.style.color = binding.value;
+                el.style.fontWeight = 'bold';
+            }
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                goodlist: [{
+                        id: 1,
+                        name: "小红",
+                        ctime: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: "小lv",
+                        ctime: new Date()
+                    },
+                    {
+                        id: 3,
+                        name: "小hei",
+                        ctime: new Date()
+                    }, {
+                        id: 4,
+                        name: "小bai",
+                        ctime: new Date()
+                    },
+                ], //goodlist end
+                id: '',
+                name: '',
+                seatxt: "请输入要搜索的内容",
+                keyWords: "",
+                test: "",
+                arr: [],
+            }, //data end
+            methods: {
+                add() {
+                    if (this.id.trim() == "" || this.name.trim() == '') {
+                        return;
+                    } else {
+                        this.goodlist.push({
+                            id: this.id,
+                            name: this.name,
+                            ctime: new Date()
+                        });
+                    }
+                    this.id = '';
+                    this.name = '';
+
+                },
+                del(id) {
+                    // 这是第一种方法===================================================
+                    // this.goodlist.some((item, i, arr) => {
+                    //     // console.log(arr.length);
+
+                    //     if (item.id == id) {
+                    //         this.goodlist.splice(i, 1);
+                    // return true;
+                    //     }
+                    // })
+                    // 这是第二种方法===================================================
+                    //  该方法的使用时找到相应的目标，若找到会返回该目标的索引值
+                    var index = this.goodlist.findIndex(item => {
+                        // console.log(item.id);
+                        if (item.id == id) {
+                            return true;
+                        }
+                    })
+                    this.goodlist.splice(index, 1);
+                },
+                search(keyWords) {
+                    // 这是第一种方法===================================================
+                    var newarr = [];
+                    // console.log(keyWords);
+                    //indexOf有个特殊的属性，就是所有的字符串使用这个方法检索的是"",返回值不是-1
+                    this.goodlist.forEach((item) => {
+                        // console.log(item)
+                        //判断语句，如果遍历的对象中包含传过来的值，就检索这个关键字，默认是''，
+                        if (item.name.indexOf(keyWords) != -1) {
+                            newarr.push(item);
+                        }
+                    })
+                    return newarr;
+
+                    // 这是第二种方法===================================================
+                    //
+
+                    // return this.goodlist.filter((item) => {
+                    //     if (item.name.includes(keyWords)) {
+                    //         console.log(item);
+                    //         return item;
+                    //     }
+                    // })
+
+                },
+                color() {
+                    
+                    
+                }
+            }, //methods end
+
+
+
+        })
+    </script>
+</body>
+
+</html>

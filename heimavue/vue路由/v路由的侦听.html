@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .myclass {
+            color: #66ccff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <router-view></router-view>
+    </div>
+
+
+
+    <template id="main">
+        <div>
+            <h1>main++++++</h1>
+            <router-link to="/main/login">login</router-link>
+            <router-link to="/main/register">register</router-link>
+            <router-view></router-view>
+        </div>
+    </template>
+
+    <template id="login">
+        <div>
+            <h1>login++++++</h1>
+        </div>
+    </template>
+
+    <template id="register">
+        <div>
+            <h1>register++++++</h1>
+        </div>
+    </template>
+
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script src="../lib/vue-router v3.0.6.js"></script>
+    <script>
+        var main = {
+            template: "#main"
+        }
+        var login = {
+            template: "#login"
+        }
+        var register = {
+            template: "#register"
+        }
+
+        const router = new VueRouter({
+            routes: [{
+                path: '/',
+                redirect: '/main',
+                
+            }, {
+                path:"/main",
+                component:main,
+                children:[
+                    {path:'login',component:login},
+                    {path:'register',component:register}
+                        
+                ]
+            }]
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {},
+            methods: {
+
+            },
+            router: router,
+            watch:{
+                '$route.path'(newVal,oldVal){
+                    console.log(newVal,oldVal);
+                    if(newVal=='/main/login'){
+                        alert("welcome,login")
+                    }
+                    if(newVal=='/main/register'){
+                        alert("welcome,register")
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>  
+    <!-- 创建一个节点，未来vue实例，会控制这个节点的所有的内容 -->
+    <div id="app">
+        <p>{{ msg }}</p>
+    </div>
+    <!-- 引入这个vuejs -->
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script>
+            // 创建一个vue的实例对象
+            var app=new Vue({
+                // 表示，当前我们new的这个vue实例，要控制页面上的哪个区域
+                el:"#app",
+                // data 属性中，存放的是el中用到的数据
+                //这里的data就是MVVM中的M，专用用来保存每个页面中的数据的
+                //所以我在考录要不要买一个快板子回去
+                data:{
+                    //通过vue提供的指令，很方便的就能够把数据渲染到页面上
+                    //程序员不用再手动操作DOM元素了，
+                    msg:'学习vue的第一天'
+                }
+            })
+    
+    </script>
+</body>
+</html>

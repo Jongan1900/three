@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .myclass {
+            color: #66ccff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/main">main</router-link>
+        <router-view></router-view>
+
+    </div>
+
+    <template id="main">
+        <div>
+            <h1>main</h1>
+            <router-link to="/main/login">login</router-link>
+            <router-link to="/main/register">register</router-link>
+
+            <router-view></router-view>
+        </div>
+    </template>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script src="../lib/vue-router v3.0.6.js"></script>
+    <script>
+        var main = {
+            template: "#main"
+        }
+        var login = {
+            template: '<h1>login++++</h1>',
+
+        }
+
+        var register = {
+            template: '<h1>register</h1>'
+        }
+        const routerobj = new VueRouter({
+            routes: [
+
+                {
+                    path: "/main",
+                    component: main,
+                    children:[
+                        {path:'login',component:login},
+                        {path:'register',component:register},
+                    ]
+                }
+            ],
+            linkActiveClass: 'myclass'
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            mehods: {
+
+            },
+
+            router: routerobj,
+        })
+    </script>
+
+</body>
+
+</html>

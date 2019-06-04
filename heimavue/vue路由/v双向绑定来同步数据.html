@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <input type="text" v-model="n1" @keyup="getn3">+
+        <input type="text" v-model="n2" @keyup="getn3">=
+        <input type="text" v-model="n3">
+
+    </div>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script src="../lib/vue-router v3.0.6.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                n1: '',
+                n2: '',
+                n3: '',
+            },
+            methods: {
+                getn3() {
+                    this.n3 = this.n1 +'+++++++'+ this.n2
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

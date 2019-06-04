@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/animate.css">
+</head>
+
+<body>
+    <div id="app">
+            <!-- 父组件向子组件传递一个方法 -->
+            <input type="button" value="父组件" @click="add">
+          <com @fun="add"></com>
+    </div>
+    <template id="com">
+        <div>
+            asdasda{{msg}}
+            <input type="button" value="自组件能否触发父组件的方法" @click="cadd">
+        </div>
+    </template>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script>
+        
+            var com={
+                template:'#com',
+                data(){
+                    return {
+                        msg:"我是子组件的私有属性msg"
+                    }
+                },
+                methods:{
+                    cadd(){
+                        this.$emit('fun',this.msg,'true')
+                    }
+                }
+            }
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag: 'false',
+                daddata:null,
+            },
+            methods: {
+                add(data,data2){
+                        this.daddata=data;
+                        this.flag=data2
+                        console.log(this.daddata,data,data2);
+                },
+            }
+            ,
+            components:{
+                com,
+            }
+        })
+    </script>
+</body>
+
+</html>

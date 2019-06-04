@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/animate.css">
+    <style>
+        .ball{
+            border: 1px solid #000;
+            background-color: #000;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" @click="flag=!flag">
+        <transition 
+        @before-enter="n1"
+        @enter="n2"
+        @after-enter="n3"
+        >
+            <div class="ball" v-show="!flag"></div>
+        
+        </transition>
+    </div>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script>
+    
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag: 'false',
+            },
+            methods: {
+                n1(el){
+
+                    el.style.transform="translate(0,0)"
+                },
+                n2(el,done){
+                    el.offsetWidth;
+                    el.style.transform="translate(100px,200px)";
+                    el.style.transition="all 1s ease";
+                    done()
+                },
+                n3(el){
+                    this.flag=!this.flag;
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

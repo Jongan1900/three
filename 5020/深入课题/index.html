@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>01_模块化计算机</title>
+</head>
+
+<body>
+
+    <!-- <input type="text" name="" id="n1"> + 
+    <input type="text" name="" id="n2"> 
+    <button id="btn">=</button>
+    <input type="text" name="" id="result"> -->
+    <script>
+        // function A(val) {
+        //     var tmp = 0;
+        //     function B(val) {
+        //         tmp = tmp + val**2;
+        //         console.log(tmp);
+        //         return B;
+        //     }
+        //     return B;
+        // }
+        // var fun = A();
+
+        function fun(val) {
+            var sum = val ** 2;
+
+            function jia(val) {
+                sum = sum + val ** 2;
+                // console.log(sum);
+                return jia;
+            }
+            /*
+            函数的 toString()方法当我们直接alert() 一个函数的时候会被调用
+            （或者 用 console.log() 打印一个函数的时候会被调用）
+            */
+            jia.toString = function () {
+                return sum
+            };
+            return jia;
+        }
+
+       alert(fun(1)(2)(3)(4));
+    
+       
+    </script>
+  
+    
+
+
+
+
+</body>
+
+</html>

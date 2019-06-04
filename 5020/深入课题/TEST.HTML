@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="dd">
+
+    </div>
+    <script>
+        var test = {
+            age: 20,
+            toString: function () {
+                return this.age - 10;
+            }, //重写 toString()
+            valueOf: function () {
+                return this.age + 40;
+            } //重写 valueOf()
+        }
+        document.getElementById("dd").innerHTML=test;
+        console.dir(alert)
+        // alert(test > 20); //true 调用的是 valueOf
+        // alert(+test); //60 调用的是 valueOf
+        // alert(test); //10  调用的是 toString
+        // console.log(test > 20); //true 调用的是 valueOf
+        // console.log(+test); //60 调用的是 valueOf
+        // console.log(test); //对象  调用的是 toString
+        // console.log('==============================================');
+        // var test = {
+        //     age: 20,
+        //     toString: function () {
+        //         console.log('toString');
+        //         return this.age - 10;
+        //     }, //重写 toString()
+        //     valueOf: function () {
+        //         console.log('valueOf');
+        //         return this.age + 40;
+        //     } //重写 valueOf()
+        // }
+        // console.log(test); // 10 toString
+        // console.log(+test); // 60 valueOf
+        // console.log('' + test); // 60 valueOf
+        // console.log(String(test)); // 10 toString
+        // console.log(Number(test)); // 60 valueOf
+        // console.log(test == '10'); // false valueOf
+        // console.log(test === '10'); // false
+    </script>
+
+</body>
+
+</html>

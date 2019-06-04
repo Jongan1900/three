@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/animate.css">
+    <style>
+        .ball{
+            border: 1px solid #000;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;background-color: #abd;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="btn" @click="flag=!flag">
+
+       
+        <!-- <transition @before-enter="beforeEnter"   @enter="enter" @after-enter="afterEnter"> -->
+             <!-- 1. 使用 transition 元素把 小球包裹起来 -->
+        <transition @before-enter="start1"   @enter="start2" @after-enter="start3">
+              
+            <div class="ball" v-show="!flag"></div>
+                
+                
+        </transition>
+    </div>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <script>
+        console.log(Vue.version);
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag:false,
+            },
+            methods: {
+                start1(el){
+                    console.log(el);
+                    el.style.transform="translate(0,0)";
+                },
+                start2(el,done){
+                    el.offsetWidth;
+                    el.style.transform="translate(200px,450px)";
+                    el.style.transition="all 1s ease";
+                    done()
+                },
+                start3(el){
+                    this.flag=!this.flag;
+                },
+            }
+
+        })
+    </script>
+</body>
+
+</html>

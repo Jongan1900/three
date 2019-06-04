@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" name="" id="" value="btn" @click="flag=!flag">
+        <p v-if="flag">哈哈哈</p>
+        <p v-show="flag">嘻嘻嘻</p>
+        <p></p>
+    </div>
+    <script src="./lib/vue-2.4.0.js"></script>
+        <script>
+            var vm= new Vue({
+                el:"#app",
+                data:{
+                    flag:true,
+                },
+                methods:{
+                    
+                }
+
+            })
+        </script>
+</body>
+</html>

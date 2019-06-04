@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/animate.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">
+                <h4 class="list-group-item-heading">评论区</h4>
+            </a>
+        </div>
+        <n1 @fun="loadmessage"></n1>
+        <ul class="list-group">
+            <li class="list-group-item" v-for="item in list" :key="item.id">
+                <span class="badge">评论人： {{item.name}}</span>
+                {{item.title}}
+            </li>
+        </ul>
+    </div>
+    <!-- 引入头部 -->
+
+
+    <!-- <template id="n1">
+        <div>
+            <div class="from-group">
+                <label for="">评论人：</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="from-group">
+                <label>内容：</label>
+                <textarea class="form-control"></textarea>
+            </div>
+        </div>
+    </template> -->
+    <template id="n1">
+        
+            <div class="from-group">
+                <label for="">评论人：</label>
+                <input type="text" class="input-sm" v-model="name">
+                <label>内容：</label>
+                <input type="text" class="input-sm" style="width: 500px;" v-model="title">
+                <button class="btn btn-sm btn-success" @click="add">button</button>
+
+            </div>
+
+        
+    </template>
+
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script>
+        var n1 = {
+            template: "#n1",
+            data() {
+                return {
+                    title: '',
+                    name: '',
+                }
+
+            },
+            methods: {
+                add() {
+                    var comment = {
+                        id: Date.now(),
+                        title: this.title,
+                        name: this.name
+                    };
+                    var list=JSON.parse(localStorage.getItem("cc")||'[]');
+                    list.unshift(comment);
+                    localStorage.setItem('cc', JSON.stringify(list));
+                    this.$emit('fun');
+                }
+            }
+        }
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag: 'false',
+                list: [{
+                    id: 1,
+                    title: "hahah",
+                    name: "xiaobai"
+                }, {
+                    id: 2,
+                    title: "aaaaa",
+                    name: "xiaoa"
+                }, {
+                    id: 3,
+                    title: "bbbb",
+                    name: "xib"
+                }, ]
+            },
+            created(){
+                this.loadmessage();
+            },
+            methods: {
+                loadmessage(){
+                    var list=JSON.parse(localStorage.getItem("cc")||'[]');
+                    this.list=list;
+                }
+            },
+            components: {
+                n1,
+            }
+
+        })
+    </script>
+</body>
+
+</html>

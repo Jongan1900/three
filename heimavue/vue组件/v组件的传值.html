@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/animate.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <mytest :parentmsg="msg"></mytest>
+    </div>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag: 'false',
+                msg: "我是父元素的msg"
+            },
+            methods: {
+
+            },
+            components: {
+                'mytest': {
+                    data(){
+                        return{
+                            msgs:"这是子组件自己的msg",
+                        }
+                    },
+                    template: '<h1>ahhhaa++{{msgs}}++++++++++++++{{parentmsg}}</h1>',
+                    props:['parentmsg'],            //这是从父元素接受并需要重新定义和赋值的方法，里面的数据要用数组装着，
+                                                    //但是props中的数据是可读不可写
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

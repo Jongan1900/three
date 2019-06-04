@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .myclass {
+            color: #66ccff;
+        }
+        .header{
+            background-color: #abf;
+            width: 100%;height: 200px;
+        }
+        .left{
+            float: left;
+            height: 600px;width: 30%;
+            background-color: #ccc;
+        }
+        .right{
+            float:right;
+            height:600px;width: 70%;
+            background-color: #adddac;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <router-view ></router-view>
+        <router-view name="left"></router-view>
+        <router-view name="right"></router-view>
+
+    </div>
+
+    <template id="header">
+        <div>
+            <h1 class="header"> wo shi header</h1>
+        </div>
+    </template>
+
+    <template id="left">
+        <div>
+            <h1 class="left"> wo shi left</h1>
+        </div>
+    </template>
+    <template id="right">
+        <div>
+            <h1 class="right"> wo shi right</h1>
+        </div>
+    </template>
+
+
+
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script src="../lib/vue-router v3.0.6.js"></script>
+    <script>
+        var header={
+            template:"#header"
+        }
+
+        var left={
+            template:"#left"
+        }
+        var right={
+            template:"#right"
+        }
+
+        const router = new VueRouter({
+                routes:[
+                    {
+                        path:"/",
+                        components:{
+                            'default':header,
+                            'left':left,
+                            'right':right,
+                        }
+                    }
+                ]
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {},
+            methods: {
+
+            },
+            router: router,
+
+        })
+    </script>
+</body>
+
+</html>

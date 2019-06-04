@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap-3.3.7.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <table class="table-striped table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>num</th>
+                    <th>price</th>
+                    <th>total</th>
+                    <th>ctime</th>
+                    <th>opa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in list" :key="item.id">
+                    <td> <input type="checkbox"></td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td >
+                        <input type="number" v-model="item.num" @input="shop(item.num,item.pri)"></td>
+                    <td>{{item.pri}}</td>
+                    <td v-html="item.num*item.pri"></td>
+                    <td>{{item.ctime|timefilter}}</td>
+                    <td><a href="###" @click="del(item.id)">del</a></td>
+
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>总价</td>
+                    <td ></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script>
+
+            Vue.filter('timefilter',(data)=>{
+                // console.log(data);
+                var dt=new Date();
+                var y=dt.getFullYear();
+                var m=(dt.getMonth()+1).toString().padStart("2",'0');
+                var d=dt.getDate().toString().padStart("2",'0');
+                var h=dt.getHours().toString().padStart("2",'0');
+                var ms=dt.getMinutes().toString().padStart("2",'0');
+                var ses=dt.getSeconds().toString().padStart("2",'0');
+                return `${y}年${m}月${d}日${h}:${ms}:${ses}`;
+            })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                list: [{
+                    id: 1,
+                    name: "花",
+                    num: 1,
+                    pri: 188,
+                    ctime: new Date()
+                }, {
+                    id: 2,
+                    name: "草",
+                    num: 2,
+                    pri: 166,
+                    ctime: new Date()
+                }, {
+                    id: 3,
+                    name: "鱼",
+                    num: 3,
+                    pri: 155,
+                    ctime: new Date()
+                }, {
+                    id: 4,
+                    name: "鸟",
+                    num: 4,
+                    pri: 2,
+                    ctime: new Date()
+                }, ],//list end
+                total:0,
+
+
+            },//data end
+            methods: {
+                shop(nums,pris){
+                  
+                },
+                del(id){
+                    this.list.forEach((item,i)=> {
+                            if(item.id==id){
+                                console.log(i);
+                                this.list.splice(i,1);
+                            }                        
+                    });
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

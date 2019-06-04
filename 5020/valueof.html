@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function f(n) {
+				var num = n;
+				function f1(m = 1) {
+					num *= m;
+					return f1;
+				}
+				// var dd=f1.valueOf()
+                f1.valueOf = function() {
+					return num;
+				};
+				return f1;
+			}
+			console.log(""+f(1)(2)(3)()    );
+			
+
+            // console.dir(f(1)(2)(3));
+		</script>
+	</body>
+	<!-- f(1)=1;f(1)(2)=2;f(1)(2)(3)=6;设计一个函数输出以上的值 -->
+</html>

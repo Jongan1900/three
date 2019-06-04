@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <div id="app">
+        <input type="text" name="" id="" v-model="n1">
+        <select name="" id="" v-model="opt">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" name="" id="" v-model="n2">
+        <input type="button" value="=" @click="show">
+        <input type="text" name="" id="" v-model="n3">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                n1: 0,
+                n2: 0,
+                n3: 0,
+                opt: "+",
+            },
+            methods: {
+                show() {
+                    console.log(this.opt);
+                    // switch (this.opt) {
+
+                    //     case ("+"):
+                    //         this.n3 = this.n1 * 1 + this.n2 * 1;
+                    //         break;
+                    //     case ("-"):
+                    //         this.n3 = this.n1 * 1 - this.n2 * 1;
+                    //         break;
+                    //     case ("*"):
+                    //         this.n3 = this.n1 * 1 * this.n2 * 1;
+                    //         break;
+                    //     case ("/"):
+                    //         this.n3 = this.n1 * 1 / this.n2 * 1;
+                    //         break;
+                    // }
+
+                        var codeStr='this.n1 * 1 '+this.opt+'this.n2 * 1';
+                        this.n3=eval(codeStr);
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>
