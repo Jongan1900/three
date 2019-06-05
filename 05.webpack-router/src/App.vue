@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-top:40px" id="app-box">
+  <div style="padding-top:40px;padding-bottom:50px" id="app-box">
     <mt-header fixed title="欢迎来到美团外卖"></mt-header>
 
     <transition >

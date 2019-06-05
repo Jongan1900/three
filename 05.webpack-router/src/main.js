@@ -12,15 +12,24 @@ import router from './router'
 import {
     Header,
     Swipe,
-    SwipeItem
+    SwipeItem,
+    Button 
 } from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button .name, Button );
 //这是MUI的安装和使用
 import '../lib/mui/css/mui.css'
 import '../lib/mui/css/icons-extra.css'
 import '../lib/mui/fonts/mui-icons-extra.ttf'
+
+import moment from 'moment'
+Vue.filter('timestr',function(data,pattern="YYYY-MM-DD HH:mm:ss"){
+    return moment(data).format(pattern);
+})
+
+
 
 var vm = new Vue({
     el: "#app",
