@@ -62,26 +62,31 @@ export default {
       phoneinfoimg: [],
       phoneinfolist: [],
       isflag: false,
-      shopnum:1,
+      shopnum: 1
     };
   },
   created() {
     this.get();
   },
   methods: {
-    getshopnum(count){
-      this.shopnum=count;
+    getshopnum(count) {
+      this.shopnum = count;
       // console.log(count);
-    },    
+    },
     ballshow() {
-      if(this.isflag==true){
-        this.isflag==false;
-      this.isflag = !this.isflag;
-        
-      }else{
+      if (this.isflag == true) {
+        this.isflag == false;
         this.isflag = !this.isflag;
-
+      } else {
+        this.isflag = !this.isflag;
       }
+      var goodsinfo = {
+        id: this.id,
+        count: this.shopnum,
+        price: this.phoneinfolist.skuPrice,
+        selected: true
+      };
+      this.$store.commit('addshopcart',goodsinfo)
     },
     get() {
       Axios.get(
@@ -106,14 +111,14 @@ export default {
       this.$router.push({ name: "phonegocommit", params: { id } });
     },
     comein(el) {
-      el.style.transform =" translate(0, 0)";
+      el.style.transform = " translate(0, 0)";
     },
     activein(el, done) {
-      const ballP=this.$refs.ball.getBoundingClientRect()
-      const iconP=document.getElementById("shopicon").getBoundingClientRect()
-      const xDist=iconP.left-ballP.left;
-      const yDist=iconP.top-ballP.top;
-      console.log(xDist,yDist);
+      const ballP = this.$refs.ball.getBoundingClientRect();
+      const iconP = document.getElementById("shopicon").getBoundingClientRect();
+      const xDist = iconP.left - ballP.left;
+      const yDist = iconP.top - ballP.top;
+      console.log(xDist, yDist);
       el.offsetWidth;
       el.style.transform = `translate(${xDist}px,${yDist}px)`;
       el.style.transition = "all 1s cubic-bezier(1,-1.35,0,1.47)";

@@ -44,13 +44,50 @@ Vue.filter('timestr', function (data, pattern = "YYYY-MM-DD HH:mm:ss") {
     return moment(data).format(pattern);
 })
 
+import Vuex from 'vuex'
+Vue.use(Vuex);
+
+
+var cart=JSON.parse(localStorage.getItem("cart")||"[]");
+const store = new Vuex.Store({
+    state: {
+        cart:cart,
+    },
+    mutations: {
+        addshopcart(state,goodsinfo){
+            var flag=false;
+            state.cart.some(item=>{
+                if(item.id==goodsinfo.id ){
+                 item.count +=~~goodsinfo.count
+                    flag=true;
+                    return true;
+                }
+            })
+            if(!flag){
+                state.cart.push(goodsinfo);
+            }
+            localStorage.setItem('cart',JSON.stringify(state.cart))
+        }
+
+    },
+    getters:{
+        getAllCount(state){
+            var c=0;
+            state.cart.forEach(element => {
+                    c+= element.count;
+            });
+            return c
+
+        }
+    }
+})
 
 
 var vm = new Vue({
     el: "#app",
     render: c => c(app),
     router,
-
+    store:store,
     methods: {
 
     }
