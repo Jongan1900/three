@@ -7,29 +7,25 @@
         <span>时间：{{photoinfo.date| timestr}}</span>
       </p>
       <hr>
-      <!-- <div class="photoinfo-img">
+      <div class="photoinfo-img">
           <img :src=photoinfo.thumbnail_pic_s alt="">
           <img :src=photoinfo.thumbnail_pic_s alt="">
           <img :src=photoinfo.thumbnail_pic_s alt="">
           <img :src=photoinfo.thumbnail_pic_s alt="">
-      </div> -->
-  <vueview></vueview>
+      </div>
+        <vueviews></vueviews>
 
       <comment-box></comment-box>
     </div>
-    <div></div>
+    
   </div>
 </template>
 
 <script>
 
-
-// import vueview from '../subcomponents/phptoview.vue'
-import vueview from '../subcomponents/phptoview1.vue'
-import comment from "../subcomponents/comment.vue";
+import commentss from '../subcomponents/Commentss.vue';
+import vueviews from '../subcomponents/Photoview.vue';
 import Axios from "axios";
-
-
 export default {
   data() {
     return {
@@ -38,28 +34,26 @@ export default {
        
     };
   },
+  created() {
+    this.getphotoinfo();
+  },
   methods: {
     getphotoinfo() {
       Axios.get(
         "https://www.easy-mock.com/mock/5cee272db198552aa3fde20d/example/getnew"
       ).then(data => {
-        //   console.log(data.data.result.data);
         for (var key of data.data.result.data) {
           if (key.uniquekey == this.id) {
             this.photoinfo = key;
-            console.log(this.photoinfo);
           }
         }
       });
     }
   },
-  created() {
-    // console.log(this.$route.params.id);
-    this.getphotoinfo();
-  },
+  
   components: {
-    "comment-box": comment,
-    vueview,
+    "comment-box": commentss,
+    vueviews,
   }
 };
 </script>

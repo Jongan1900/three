@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import comment from '../subcomponents/comment.vue'
+import commentss from '../subcomponents/Commentss.vue'
 import Axios from "axios";
 
 export default {
@@ -31,7 +31,7 @@ export default {
     };
   },
   components:{
-      'comment-box':comment,
+      'comment-box':commentss,
   },
   created() {
     this.getnewsinfo();

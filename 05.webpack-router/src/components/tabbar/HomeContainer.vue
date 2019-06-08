@@ -1,10 +1,6 @@
 <template>
   <div>
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="(val,key,i)  in banner" :key="i">
-        <img :src="val" alt>
-      </mt-swipe-item>
-    </mt-swipe>
+    <swipe :banner="banner" :isfull="true"></swipe>
 
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -20,10 +16,10 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/phonelist">
           <img src="../../img/menu3.png" alt>
           <div class="mui-media-body">商品详情</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -52,6 +48,7 @@
 import { Toast, MessageBox } from "mint-ui";
 import axios from "axios";
 import Vue from "vue";
+import swipe from '../subcomponents/Swipe.vue'
 export default {
   data() {
     return {
@@ -88,6 +85,9 @@ export default {
         );
       console.log(this.banner);
     }
+  },
+  components:{
+    swipe,
   }
 };
 </script>
@@ -98,24 +98,7 @@ export default {
   background-color: #fff;
   border: none;
 }
-.mint-swipe {
-  height: 300px;
-  .mint-swipe-item {
-    &:nth-child(1) {
-      background-color: #000;
-    }
-    &:nth-child(2) {
-      background-color: #ccc;
-    }
-    &:nth-child(3) {
-      background-color: #66ccff;
-    }
-  }
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
+
 .mui-table-view-cell.mui-media.mui-col-xs-4.mui-col-sm-3 {
   img {
     width: 60px;

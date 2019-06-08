@@ -6,9 +6,6 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 
-// 引入缩略图插件
-// import VuePreview from 'vue2-preview'
-// Vue.use(VuePreview)
 
 
 // 引入缩略图插件2
@@ -26,7 +23,7 @@ import router from './router'
 //     Button,
 //     Lazyload
 // } from 'mint-ui';
-// // import { Lazyload } from "mint-ui";
+//  import { Lazyload } from "mint-ui";
 // Vue.use(Lazyload);
 // Vue.component(Header.name, Header);
 // Vue.component(Swipe.name, Swipe);
