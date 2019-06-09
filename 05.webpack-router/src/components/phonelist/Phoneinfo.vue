@@ -84,7 +84,9 @@ export default {
         id: this.id,
         count: this.shopnum,
         price: this.phoneinfolist.skuPrice,
-        selected: true
+        selected: true,
+        title:this.phoneinfolist.skuName,
+        img:this.phoneinfolist.skuThumbImgUrl
       };
       this.$store.commit('addshopcart',goodsinfo)
     },

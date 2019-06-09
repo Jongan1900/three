@@ -1,6 +1,10 @@
 <template>
   <div style="padding-top:40px;padding-bottom:50px" id="app-box">
-    <mt-header fixed title="欢迎来到美团外卖"></mt-header>
+    <mt-header fixed title="欢迎来到美团外卖">
+      <span slot="left" v-show="flag" @click="goback">
+        <mt-button icon="back">返回</mt-button>
+      </span>
+    </mt-header>
 
     <transition>
       <router-view></router-view>
@@ -19,7 +23,7 @@
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
           <span class="mui-badge" id="shopicon">{{$store.getters.getAllCount}}</span>
         </span>
-        <span class="mui-tab-label" >购物车</span>
+        <span class="mui-tab-label">购物车</span>
       </router-link>
       <router-link class="mui-tab-item-llb" to="/search">
         <span class="mui-icon mui-icon-search"></span>
@@ -32,12 +36,36 @@
 
 
 <script>
+export default {
+  data() {
+    return {
+      flag: true
+    };
+  },
+  methods: {
+    goback() {
+      console.log(this.$router.go(-1));
+    }
+  },
+  created() {
+    this.flag=this.$route.path==='/home'?false:true
+  },
+  watch: {
+    '$route.path':function(newval){
+        if(newval==='/home'){
+          this.flag=false
+        }else{
+          this.flag=true;
+        }
+    }
+  }
+};
 </script>
 
 
 
 <style lang="scss" >
-.mint-header{
+.mint-header {
   z-index: 99;
 }
 #app-box {
@@ -62,7 +90,6 @@
   color: #007aff;
 }
 
-
 .mui-bar-tab .mui-tab-item-llb {
   display: table-cell;
   overflow: hidden;
@@ -81,7 +108,7 @@
   padding-top: 0;
   padding-bottom: 0;
 }
-.mui-bar-tab .mui-tab-item-llb .mui-icon~ .mui-tab-label {
+.mui-bar-tab .mui-tab-item-llb .mui-icon ~ .mui-tab-label {
   font-size: 11px;
   display: block;
   overflow: hidden;
