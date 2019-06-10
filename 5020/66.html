@@ -5,15 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+    
+    </style>
 </head>
 <body>
     
-
+        <div >
+            <p id="d1">1</p>
+        </div>
 <script>
-    
-          const aa="asd";
-          const dd={aa};
-          console.log(dd);
+    document.getElementById('d1').onclick=()=>{
+        console.log(event.currentTarget)
+    }
+         
     </script>
 
 

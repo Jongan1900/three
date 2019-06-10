@@ -3,8 +3,12 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
+import './css/font.css'
 
 Vue.config.productionTip = false;
+
+
+
 
 new Vue({
   router,
