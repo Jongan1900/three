@@ -4,8 +4,8 @@
       <i class="iconfont">&#xe8b5;</i>
     </div>
     <div class="header-m">
-      <p>朋友圈</p>
-      <p>广场</p>
+      <router-link to="/discover/friendsg" class="pyq">朋友圈</router-link >
+      <router-link to="/discover/gc" >广场</router-link >
     </div>
     <div class="header-r">
       <i class="iconfont">
@@ -14,10 +14,13 @@
       </i>
       <i class="iconfont">&#xe875;</i>
     </div>
+    
   </div>
 </template>
 <script>
-export default {};
+export default {
+  
+}
 </script>
 
 <style lang="scss" scoped>
@@ -29,10 +32,13 @@ export default {};
   align-items: center;
   .header-m {
     display: flex;
-    p:nth-child(2) {
+    a:nth-child(2) {
       margin-left: 0.9375rem;
     }
+    
+    
   }
+  
   .header-r {
     display: flex;
     align-items: center;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cg-discover">
+    <div class="cg-discover" @click="tofriendsG">
       <div class="cg-l">
         <i class="iconfont red">&#xe89e;</i>
         <div>玩物圈</div>
@@ -48,7 +48,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+
+    }
+  },
+  methods: {
+    tofriendsG(){
+       this.$router.push({path:"/discover/friendsg"})
+    }
+  },
+};2
 </script>
 
 
