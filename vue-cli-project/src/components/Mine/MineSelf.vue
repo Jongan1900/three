@@ -6,13 +6,11 @@
       </div>
       <div class="li-text">
         <P>蠢蠢蠢古</P>
-        <P>用户ID:</P>
+        <P>{{new Date()}}</P>
       </div>
     </li>
     <li class="cg-li-r">
-      <i class="iconfont">&#xe63e;</i>
-      <div class="iconfont">&#xe8a2;
-</div>
+      <i class="iconfont">&#xe8a6;</i>
     </li>
   </ul>
 </template>
@@ -35,8 +33,9 @@ export default {};
     align-items: center;
 
     .li-icon {
-      width: 5rem;
-      height: 5rem;
+
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -49,7 +48,7 @@ export default {};
     .li-text {
       height: 5rem;
       // background-color: red;
-      width: 70%;
+      flex:1;
       text-align: left;
       display: flex;
       flex-direction: column;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cg-discover">
+    <div @click="gomydata" class="cg-discover">
       <div class="cg-l">
         <i class="iconfont">&#xe6ce;</i>
         <div>我的动态</div>
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <div class="cg-discover">
+    <div class="cg-discover" @click="goshopmall">
       <div class="cg-l">
         <i class="iconfont">&#xe899;</i>
         <div>商城</div>
@@ -80,7 +80,20 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    gomydata() {
+      this.$router.push({
+        name: "mydata"
+      });
+    },
+    goshopmall() {
+      this.$router.push({
+        name: "shopmall"
+      });
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 .cg-discover {

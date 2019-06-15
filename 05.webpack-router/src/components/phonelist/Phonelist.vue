@@ -50,8 +50,8 @@ export default {
   methods: {
     tz(id){
       // this.$router.push("/home/phoneinfo/"+id)
-      this.$router.push({path:"/home/phoneinfo/"+id})
-      // this.$router.push({name:"phoneinfo",params:{id}})
+      // this.$router.push({path:"/home/phoneinfo/"+id})
+      this.$router.push({name:"phoneinfo",params:{id}})
     },
     getMore() {
       this.getphonelist();

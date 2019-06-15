@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+            var arr=[
+            "http://chuantu.xyz/t6/702/1560484138x2728278622.png",
+            "http://chuantu.xyz/t6/702/1560484247x2728278622.png",
+            "http://chuantu.xyz/t6/702/1560484339x992245975.png",
+            "http://chuantu.xyz/t6/702/1560484369x992245975.png",
+            "http://chuantu.xyz/t6/702/1560484403x992245975.png",
+            "http://chuantu.xyz/t6/702/1560484431x1709417317.png",
+            "http://chuantu.xyz/t6/702/1560484448x1709417317.png",
+            "http://chuantu.xyz/t6/702/1560484483x1709417317.png",
+            "http://chuantu.xyz/t6/702/1560484498x1709417317.png"
+    ]
+   var price=[
+       5200,8888,13142,34520,52013,52013,99999,99999,99999  
+   ]
+   var title=[
+        "鲜花戒指",
+       "水晶戒指",
+       "铂金戒指",
+       "蝴蝶结戒指",
+       "狼王戒指",
+       "樱花雨戒指",
+       "倾心玫瑰戒指",
+       "钻石戒指",
+       "红宝石戒指"
+   ]
+    var arr2=[
+            "http://a1.qpic.cn/psb?/V12UHI3A3efGo8/1hW48kvnMSdythnufB5i.J1r5ew0osQoY8gtlt7BAbQ!/m/dLgAAAAAAAAAnull&bo=RAFGAUQBRgERCT4!&rf=photolist&t=5",
+            "http://a2.qpic.cn/psb?/V12UHI3A3efGo8/0q78SFTPeK62Vdi8zM5yJkMU*oD4v5roPYbIHgQpQlw!/m/dMUAAAAAAAAAnull&bo=RAFGAUQBRgERCT4!&rf=photolist&t=5",
+            "http://a3.qpic.cn/psb?/V12UHI3A3efGo8/CiHyLfmoNMielBpzpBRuu0ZVqI*XZ9s.7kZTvcMO6VY!/m/dLYAAAAAAAAAnull&bo=RAFGAUQBRgERCT4!&rf=photolist&t=5",
+            "http://a4.qpic.cn/psb?/V12UHI3A3efGo8/2w3c7dysBRiUb34wQ0Cie2g1iltFZ8BRNYp0aLjhG2k!/m/dL8AAAAAAAAAnull&bo=RAFGAUQBRgERCT4!&rf=photolist&t=5",
+            "http://a1.qpic.cn/psb?/V12UHI3A3efGo8/AdbPhifnNdvQ8DJo7hKHGmdoJG7vt2j9spk27uucpU4!/m/dDQBAAAAAAAAnull&bo=RAFGAUQBRgERCT4!&rf=photolist&t=5",
+            "http://a4.qpic.cn/psb?/V12UHI3A3efGo8/SMgSP76DpgX0GDmBhIR20LQYDmpgvN3MV22.DcMKPIo!/m/dFMBAAAAAAAAnull&bo=RAFGAUQBRgERCT4!&rf=photolist&t=5",
+            ]
+        
+
+
+           
+            var obj=[];						
+        arr.forEach((item,index)=>{			
+            obj.push({
+                img:arr[index],
+                price:price[index],
+                title:title[index],
+                id:~~index+1000
+            })
+           
+        })
+        console.log(JSON.stringify(obj) );	
+        </script>
+</body>
+</html>

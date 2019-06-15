@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition>
-      <router-view></router-view>
+      <router-view class="m"></router-view>
     </transition>
 
     <div class="cg-flxed">
@@ -60,23 +60,24 @@ export default {
 </script>
 
 <style lang="scss">
-.cg-active{
-    color:green;
-    i{
-       color:green;
-    }
+.cg-active {
+  color: green;
+  i {
+    color: green;
   }
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   a {
     text-decoration: none;
   }
-  margin-bottom: 3.4375rem;
   .line {
     height: 0.625rem;
     background-color: #f5f5f5;
@@ -89,14 +90,13 @@ export default {
     width: 100%;
     height: 6.25rem;
   }
-  
-  
-  
+  .m{
+      flex:1;
+      overflow-y: auto;
+  }
   .cg-flxed {
-    position: fixed;
-    height: 2.8125rem;
-    left: 0;
-    bottom: 0;
+    
+    height: 45px;
     width: 100%;
     background-color: #fff;
     display: flex;
@@ -111,7 +111,7 @@ export default {
         // height: 1.875rem;
         display: block;
         position: relative;
-        color:#000;
+        color: #000;
         // font-size: 1.875rem;
         .span-ball {
           position: absolute;
