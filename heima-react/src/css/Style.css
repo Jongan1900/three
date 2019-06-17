@@ -1,0 +1,12 @@
+.title{
+    color:red;
+    text-align:center
+}
+:global(.cccc){
+    font-style: italic
+}
+div{
+   color:blue;
+   padding: 10px;
+   border:1px solid red;
+}
