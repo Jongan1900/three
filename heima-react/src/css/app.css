@@ -1,7 +1,7 @@
 .logo {
   width: 120px;
   height: 31px;
-  background: #ddd url('../images/logo.gif');
+  background: #ddd url("../images/logo.gif");
   border-radius: 6px;
   margin: 16px 24px 16px 0;
   float: left;

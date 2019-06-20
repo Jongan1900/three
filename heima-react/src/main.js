@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import MsgItem from '@/components/MsgItem'
-// import Message from '@/components/Message2'
-import Btn1 from '@/components/btn'
+
+import App from './App'
 
 
-ReactDOM.render(<div>
-    <Btn1></Btn1>
-</div>,document.getElementById('app'))
+
+ReactDOM.render(<App>
+   123
+</App>,document.getElementById('app'))
 
 

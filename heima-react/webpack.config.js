@@ -15,8 +15,8 @@ module.exports = {
   ],
   module: {
     rules: [
-      { test: /\.css$/, use: ['style-loader', 'css-loader?modules&localIdentName=[name]_[local]-[hash:5]'] }, // 如果想要启用 CSS 模块化，可以为 css-loader 添加 modules 参数即可
-      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }, // 如果想要启用 CSS 模块化，可以为 css-loader 添加 modules 参数即可
+      { test: /\.scss$/, use: ['style-loader', 'css-loader?modules&localIdentName=[name]_[local]-[hash:5]', 'sass-loader'] },
       { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=5000' },
       { test: /\.js|.jsx$/, use: 'babel-loader', exclude: /node_modules/ }
     ]
@@ -26,8 +26,9 @@ module.exports = {
     extensions:['.js', '.json','.jsx'],//省略后缀为js。json。jsx的文件
     alias: {
       '@':path.join(__dirname,'./src'),// 配置路径标识符，代表   项目录中src这一层路径，
-      'myc':path.join(__dirname,'./src/components/')
-
+      'myc':path.join(__dirname,'./src/components/'),
+      // 'react': path.resolve(__dirname, 'path/to/your/react/installation/folder', 'react')
+        
     }
   }
 }
