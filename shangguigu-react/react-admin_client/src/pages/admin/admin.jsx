@@ -20,6 +20,7 @@ export default class admin extends Component {
 
     render() {
         const user = memoryUtils.user
+        console.log(user)
         //验证用户是否登录以后
         if (!user || !user._id) {
             //如果验证没有用户的信息，就会返回一个标签跳转到登录的页面
@@ -32,7 +33,7 @@ export default class admin extends Component {
                 </Sider>
                 <Layout>
                     <Header>Header</Header>
-                    <Content style={{ backgroundColor: "#fff" ,margin:20}}>
+                    <Content style={{ backgroundColor: "#fff", margin: 20 }}>
                         <Switch>
                             {/* <Redirect from='/' exact to='/home' /> */}
                             <Route path='/home' component={Home} />

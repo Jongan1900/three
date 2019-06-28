@@ -11,18 +11,27 @@ export const reqAddUser =(user)=>ajax(BASE+'/manage/user/add',user,'POST')
 
 
 //获取到一级/二级分类的列表
-export const reqCategorys=(parentId)=>{ajax('/manage/category/list', {parentId})}
+export const reqCategorys=(parentId)=>ajax('/manage/category/list', {parentId})
 // 添加分类
-export const reqAddCategory = (parentId, categoryName) => ajax('/manage/category/add',
-{parentId,categoryName}, 'POST')
-// 更新品类名称               //形参默认值
-export const reqUpdateCategory = ({categoryId, categoryName}) =>
-ajax('/manage/category/update', {categoryId,categoryName}, 'POST')
+export const reqAddCategory = (categoryName, parentId) => ajax(BASE + '/manage/category/add', {categoryName, parentId}, 'POST')
+
+// 更新分类
+export const reqUpdateCategory = ({categoryId, categoryName}) => ajax(BASE + '/manage/category/update', {categoryId, categoryName}, 'POST')
+
+//请求商品数据
+export const reqProducts =(pageNum,pageSize)=>ajax(BASE+'/manage/product/list',{pageNum,pageSize})
+
+//请求搜索关键字的数据
+export const reqSearch=({pageNum,pageSize,searchName,searchType})=>ajax(BASE+'/manage/product/search',{
+  pageNum,
+  pageSize,
+  [searchType]:searchName
+})
+//
 /*
 json请求的接口请求函数
  */
 export const reqWeather = (city) => {
-
     return new Promise((resolve, reject) => {
       const url = `http://api.map.baidu.com/telematics/v3/weather?location=${city}&output=json&ak=3p49MVra6urFRGOT9s8UBWr2`
       // 发送jsonp请求

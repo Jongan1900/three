@@ -88,6 +88,10 @@ export default class MovieList extends Component {
                 })
 
     }
+
+
+    
+  
     pageChange=(page)=>{
         //手动跳转的方式不适用，
             // window.location.href='#/movie/'+this.state.movieType+'/'+page
