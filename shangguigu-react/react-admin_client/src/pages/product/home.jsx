@@ -6,11 +6,12 @@ import {
     Icon,
     Input,
     Button,
+    message,
 
 } from 'antd'
 import LinkButton from '../../components/link-button/linkButton'
 import {PAGE_SIZE} from '../../utils/constants'
-import {reqProducts,reqSearch} from '../../api/index'
+import {reqProducts,reqSearch,reqUpdateStatus} from '../../api/index'
 const Option = Select.Option
 /*
 
@@ -42,32 +43,40 @@ export default class ProductHome extends Component {
             {
                 width:100,
                 title: '状态',
-                dataIndex: 'status',
-                render:(status)=>{
+                // dataIndex: 'status',
+                render:(product)=>{
+                    const {status,_id}=product
+                    // console.log(product)
                     return (
                         <span>
-                        <Button size="small" type="primary">下架</Button>
-                        <LinkButton>在售</LinkButton>
+                        <Button 
+                        size="small" 
+                        type="primary"
+                        onClick={()=>{this.updateStatus(_id,status===1?2:1)}}
+                        >{status===1?'下架':'上架'}</Button>
+                        <LinkButton>{status===1?'在售':'已下架'}</LinkButton>
                         </span>
                     )
                 }
             },
             {
                 width:100,
-                title: '操作',
-                dataIndex: 'product',
+                title: '操作', 
                 render:(product)=>{
                     return (
                         <span>
-                        <LinkButton>详情</LinkButton>
-                        <LinkButton>修改</LinkButton>
+                        <LinkButton onClick={()=>{this.props.history.push('/product/detail',{product})}} >详情</LinkButton>
+                        <LinkButton onClick={()=>{this.props.history.push('/product/addupdate',product)}}>修改</LinkButton>
                         </span>
                     )
                 }
             },
         ];
     }
+    //根据商品的页数发请求获取数据
     getproducts=async (pageNum)=>{
+        //存储pageNum
+        this.pageNum=pageNum
         //发送请求之前，显示loading
         const {searchName,searchType} =this.state
         let result
@@ -82,6 +91,7 @@ export default class ProductHome extends Component {
         result=await reqProducts(pageNum,PAGE_SIZE)
     }
          //发送请求拿到数据之后，关闭loading
+        //  console.log(result)
         this.setState({
             loading:false
         })
@@ -91,6 +101,14 @@ export default class ProductHome extends Component {
                 products:result.data.list,
             })
         }
+    }
+    updateStatus=async (productId,status)=>{
+       const result=await reqUpdateStatus({productId,status});
+    //    console.log(result);
+       if(result.status===0){
+           message.success('更新商品成功')
+           this.getproducts(this.pageNum)
+       }
     }
     componentWillMount(){
         this.initColumns()
@@ -113,7 +131,7 @@ export default class ProductHome extends Component {
             </span>
         )
         const extra = (
-            <Button type="danger" >
+            <Button type="danger" onClick={()=>this.props.history.push('/product/addupdate')}>
                 <Icon type="plus"></Icon>
                 添加商品
             </Button>

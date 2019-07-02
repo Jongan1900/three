@@ -8,32 +8,32 @@ const { SubMenu } = Menu;
  class LeftNav extends Component {
   //第一种方法
  //#region
-  // getMenuList_m=(menuList)=>{
-  //   return menuList.map(item=>{
-  //     // 通过判断item中是否有children进行渲染
-  //     if(!item.children){
-  //       return <Menu.Item key={item.key}>
-  //       <Link to={item.key}>
-  //         <Icon type={item.icon} />
-  //         <span>{item.title}</span>
-  //       </Link>
-  //     </Menu.Item>
-  //     }else{
-  //       return <SubMenu
-  //       key={item.key}
-  //       title={
-  //         <span>
-  //           <Icon type={item.icon} />
-  //           <span>{item.title}</span>
-  //         </span>
-  //       }
-  //     >
-  //       {/* {使用递归函数进行子路由的渲染} */}
-  //      {this.getMenuList(item.children)}
-  //     </SubMenu>
-  //     }
-  //   })
-  // }
+  getMenuList_m=(menuList)=>{
+    return menuList.map(item=>{
+      // 通过判断item中是否有children进行渲染
+      if(!item.children){
+        return <Menu.Item key={item.key}>
+        <Link to={item.key}>
+          <Icon type={item.icon} />
+          <span>{item.title}</span>
+        </Link>
+      </Menu.Item>
+      }else{
+        return <SubMenu
+        key={item.key}
+        title={
+          <span>
+            <Icon type={item.icon} />
+            <span>{item.title}</span>
+          </span>
+        }
+      >
+        {/* {使用递归函数进行子路由的渲染} */}
+       {this.getMenuList(item.children)}
+      </SubMenu>
+      }
+    })
+  }
    //#endregion
   componentWillMount(){
     this.MenuList=this.getMenuList(menuList)
@@ -41,7 +41,11 @@ const { SubMenu } = Menu;
   }
   //第二种方法
   getMenuList=(menuList)=>{
-    const path=this.props.location.pathname
+    let path=this.props.location.pathname
+    if(path.indexOf('/product')===0){
+      path='/product'
+    }
+
     return menuList.reduce((pre,item)=>{
       if(!item.children){
         pre.push(( <Menu.Item key={item.key}>
@@ -53,7 +57,8 @@ const { SubMenu } = Menu;
         ))
       }else{
         //渲染的时候把记录当前的key保存起来
-        const cItem=item.children.find(cItem=>cItem.key===path)
+        const cItem=item.children.find(cItem=>path.indexOf(cItem.key)===0)
+        console.log(cItem)
         if(cItem){
           this.openKey=item.key 
         }
@@ -77,7 +82,10 @@ const { SubMenu } = Menu;
   render() {
     console.log(this);
     //得到需要打开菜单项的key
-    const path= this.props.location.pathname
+    let path= this.props.location.pathname
+    if(path.indexOf('/product')===0){
+      path='/product'
+    }
     const openKey=this.openKey
     return (
       

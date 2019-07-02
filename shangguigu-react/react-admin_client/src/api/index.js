@@ -27,6 +27,12 @@ export const reqSearch=({pageNum,pageSize,searchName,searchType})=>ajax(BASE+'/m
   pageSize,
   [searchType]:searchName
 })
+
+//更改商品的上架/下架的状态
+export const reqUpdateStatus=({productId,status})=>ajax(BASE+'/manage/product/updateStatus',{productId,status},'POST')
+
+//根据商品的id请求分类
+export const reqCategory=(categoryId)=>ajax(BASE+'/manage/category/info',{categoryId})
 //
 /*
 json请求的接口请求函数
