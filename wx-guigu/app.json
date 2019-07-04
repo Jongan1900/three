@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/movies/movies",
+    "pages/list/list",
+    "pages/detail/detail",
+    "pages/movieDetail/movieDetail"
+    
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#257957",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "MINI",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/list/list",
+        "text": "首页",
+        "iconPath":"/images/icon/share.png",
+        "selectedIconPath":"/images/icon/share.png"
+      },
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "日志",
+        "iconPath": "/images/icon/view.png",
+        "selectedIconPath": "/images/icon/view.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

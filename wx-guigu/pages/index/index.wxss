@@ -1,0 +1,36 @@
+/* pages/index/index.wxss */
+page{
+  height: 100%;
+  background-color: #85bf3b;
+}
+.indexbox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.indexbox_img{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  border: 2rpx solid #85bf3b;
+  background-color: #85bf3b;
+  margin: 100rpx;
+}
+
+.indexbox_text{
+  font-size: 32rpx;
+  font-weight: 900; 
+  margin: 100rpx 0;
+}
+.indexbox_button{
+  border-radius: 35rpx;
+  border: 1rpx solid #85bf3b;
+  display: block;
+  width: 300rpx;
+  text-align: center;
+  line-height: 120rpx;
+  height: 120rpx;
+  background-color: #257957;
+  color: #fff;
+}

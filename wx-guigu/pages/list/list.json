@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#398a7a",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "硅谷周刊",
+  "backgroundColor": "#fff",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

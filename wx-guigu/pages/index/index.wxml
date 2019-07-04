@@ -1,0 +1,10 @@
+<view class="indexbox">
+  <image src="{{myUserInfo.avatarUrl}}" class="indexbox_img"></image>
+  <text class="indexbox_text" >{{myUserInfo.nickName}}</text>
+  <!-- <open-data class="indexbox_text" type="userNickName"  lang="zh_CN"></open-data> -->
+  <view>
+    <text class="indexbox_button" catchtap="handleClick">开启小程序之旅</text>
+    <button class="indexbox_button" open-type="getUserInfo" bindgetuserinfo="handleUserInfo" style="display:{{isShow?'none':'block'}}">获取用户信息</button>
+  </view>
+
+</view>
